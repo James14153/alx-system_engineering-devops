@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# fixing docker making apathe server return 'hoberton school' when querying root
+
+sudo apt-get update -y
+sudo apt-get install -y apache2
+sudo /etc/init.d/apache2 start
+echo "Holberton School" | sudo tee -a /var/www/html/index.html
+sudo /etc/init.d/apache2 restart
