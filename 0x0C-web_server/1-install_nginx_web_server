@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#Bash script that configures a new Ubuntu machine
+
+apt-get update -y
+apt-get install nginx -y
+sudo ufw 'Nginx HTTP'
+sh -c 'echo "Hello world" > /var/www/html/index.html'
+service nginx restart
+
