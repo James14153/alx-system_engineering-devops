@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# using until looop to print best school 10 times
+
+times=0
+until [ $times -eq 10 ]
+do
+	echo "Best School"
+	(( times++ ))
+done
