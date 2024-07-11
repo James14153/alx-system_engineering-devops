@@ -6,7 +6,7 @@
 
 times=1
 
-while [ $times -ne 10 ]
+while [ $times -ne 11 ]
 do
 	if [ $times -eq 4 ]
 	then	
@@ -14,7 +14,8 @@ do
 	elif [ $times -eq 8 ]
 	then
 		echo "good luck"
+	else
+		echo "Best School"
 	fi
-	echo "Best School"
 	(( times++ ))
 done
