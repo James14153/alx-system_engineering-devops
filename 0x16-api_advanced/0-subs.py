@@ -1,21 +1,40 @@
+#!/usr/bin/python3
 import requests
 
+"""
+number_of_subscribers - queries the reddit api
+returns: the number of subscribers of given subreddit
+"""
+
 def number_of_subscribers(subreddit):
+    """
+    queries to reddit api
+    """
 
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
 
     headers = {
-            "User-Agent": "MyRedditApp/0.1"
+            'User-Agent': 'Chrome/128.0.6613.114'
     }
 
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
+        print(f"status code: {response.status_code}")
+        
         if response.status_code == 200:
-
             data = response.json()
-            return data['data']['subscribers']
-        else:
+            print(f"response JSON: {data}")
+
+            subscribers = data['data'].get('subscribers', 0)
+            print(f"Number of subscribers: {subscribers}")
+            return subscribers
+        elif response.status_code == 302:
+            print("Redirect detected - Subredit may not exist.")
             return 0
-    except requests.RequestException:
+        else:
+            print(f"Unexpected status code: {response.status_code}")
+            return 0
+    except requests.RequestException as e:
+        print(f"Request failed:{e}")
         return 0
 
